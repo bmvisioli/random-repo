@@ -1,5 +1,8 @@
 package com.github.bmvisioli.lun.app;
 
+import com.github.bmvisioli.lun.output.Query;
+import com.github.bmvisioli.lun.output.Report;
+
 public class EntryPoint {
 
 	public static final String WRONG_SYNTAX_MESSAGE = "Usage: java -jar <jar filename> [query <country>|reports]";
@@ -9,12 +12,12 @@ public class EntryPoint {
 		switch(input.length) {
 			case 1:
 				if(input[0].equals("reports")) {
-					result = "reports";
+					result = new Report().build();
 				}
 				break;
 			case 2: 
 				if(input[0].equals("query")) {
-					result = "query";
+					result = new Query(input[1]).build();
 				}
 				break;
 		}

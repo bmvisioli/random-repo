@@ -6,25 +6,25 @@ import static org.junit.Assert.*;
 public class EntryPointTest {
 
 	@Test
-	public void handleInputNoOption() {
+	public void handleInputNoOptionTest() {
 		String[] input = {};
 		assertEquals(EntryPoint.WRONG_SYNTAX_MESSAGE, EntryPoint.handleInput(input));
 	}
 	
 	@Test
-	public void handleInputReportsOption() {
+	public void handleInputReportsOptionTest() {
 		String[] input = {"reports"};
 		assertEquals("reports", EntryPoint.handleInput(input));
 	}
 	
 	@Test
-	public void handleInputQueryOption() {
+	public void handleInputQueryOptionTest() {
 		String[] input = {"query", "Brazil"};
-		assertEquals("query", EntryPoint.handleInput(input));
+		assertEquals("query Brazil", EntryPoint.handleInput(input));
 	}
 	
 	@Test
-	public void handleInputQueryOptionNoCountry() {
+	public void handleInputQueryOptionNoCountryTest() {
 		String[] input = {"query"};
 		assertEquals(EntryPoint.WRONG_SYNTAX_MESSAGE, EntryPoint.handleInput(input));
 	}
