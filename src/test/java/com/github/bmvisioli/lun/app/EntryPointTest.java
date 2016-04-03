@@ -7,8 +7,25 @@ public class EntryPointTest {
 
 	@Test
 	public void handleInputNoOption() {
-		String[] emptyArgs = {};
-		assertEquals(EntryPoint.NO_OPTION_MESSAGE,EntryPoint.handleInput(emptyArgs));
+		String[] input = {};
+		assertEquals(EntryPoint.WRONG_SYNTAX_MESSAGE, EntryPoint.handleInput(input));
 	}
 	
+	@Test
+	public void handleInputReportsOption() {
+		String[] input = {"reports"};
+		assertEquals("reports", EntryPoint.handleInput(input));
+	}
+	
+	@Test
+	public void handleInputQueryOption() {
+		String[] input = {"query", "Brazil"};
+		assertEquals("query", EntryPoint.handleInput(input));
+	}
+	
+	@Test
+	public void handleInputQueryOptionNoCountry() {
+		String[] input = {"query"};
+		assertEquals(EntryPoint.WRONG_SYNTAX_MESSAGE, EntryPoint.handleInput(input));
+	}
 }
