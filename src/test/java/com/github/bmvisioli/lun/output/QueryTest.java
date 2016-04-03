@@ -17,7 +17,5 @@ public class QueryTest {
 	public void buildTest() {
 		query = new Query("Netherlands");
 		assertEquals("query Netherlands", query.build());
-		
 	}
-	
 }
