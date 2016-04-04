@@ -5,6 +5,11 @@ import com.github.bmvisioli.lun.output.Report;
 
 public class EntryPoint {
 
+	public static void main(String[] args) {
+		System.out.println(handleInput(args));
+		System.exit(0);
+	}
+	
 	public static final String WRONG_SYNTAX_MESSAGE = "Usage: java -jar <jar filename> [query <country>|reports]";
 	
 	protected static String handleInput(String[] input) {

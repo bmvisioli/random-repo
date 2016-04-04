@@ -12,7 +12,6 @@ public class ReportsTest {
 	
 	@Test
 	public void buildTest() {
-		System.out.println(report.build());
 		assertTrue(report.build().startsWith("Top 10 countries"));
 	}
 	

@@ -8,3 +8,13 @@ dependencies {
 	compile 'org.beanio:beanio:2.1.0'
 	testCompile 'junit:junit:4.12'
 }
+
+jar {
+	manifest {
+		attributes 'Main-Class': 'com.github.bmvisioli.lun.app.EntryPoint'
+	}
+	
+	from {
+		configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+	}
+}

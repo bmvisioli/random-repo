@@ -1,5 +1,7 @@
 package com.github.bmvisioli.lun.input;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,7 +30,7 @@ public class AirportData {
 		
 		StreamFactory factory = StreamFactory.newInstance();
         factory.loadResource("airport.xml");
-        BeanReader in = factory.createReader("airport", ClassLoader.getSystemResource("airports.csv").getFile());
+        BeanReader in = factory.createReader("airport", new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("airports.csv"))));
         Object record = null;
         
         //skip header line
