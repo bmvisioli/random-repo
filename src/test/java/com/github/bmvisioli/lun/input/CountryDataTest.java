@@ -15,8 +15,6 @@ public class CountryDataTest {
 		assertEquals(302672	, countryList.get(0).getId());
 		assertEquals("AD", countryList.get(0).getCode());
 		assertEquals("Andorra", countryList.get(0).getName());
-		assertEquals("EU", countryList.get(0).getContinent());
-		assertEquals("http://en.wikipedia.org/wiki/Andorra", countryList.get(0).getWikipediaLink());
-		assertEquals("", countryList.get(0).getKeywords());
+		assertEquals(247, countryList.size());
 	}
 }

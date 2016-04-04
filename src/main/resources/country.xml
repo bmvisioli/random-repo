@@ -1,0 +1,12 @@
+<beanio xmlns="http://www.beanio.org/2012/03">
+  <stream name="country" format="csv">
+    <record name="country" class="com.github.bmvisioli.lun.model.Country">
+      <field name="id" type="int" />
+      <field name="code" />
+      <field name="name" />
+      <field name="continent" ignore="true"/>
+      <field name="wikipediaLink" ignore="true"/>
+      <field name="keywords" ignore="true"/>
+    </record>
+  </stream>
+</beanio>

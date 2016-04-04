@@ -5,41 +5,37 @@ public class Country {
 	private int id;
 	private String code;
 	private String name;
-	private String continent;
-	private String wikipediaLink;
-	private String keywords;
 	
-	public Country(int id, String code, String name, String continent, String wikipediaLink, String keywords) {
+	public Country() {}
+	
+	public Country(int id, String code, String name) {
 		this.id = id;
-		this.keywords = keywords;
 		this.code = code;
 		this.name = name;
-		this.continent = continent;
-		this.wikipediaLink = wikipediaLink;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public String getKeywords() {
-		return keywords;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getCode() {
 		return code;
 	}
 
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	public String getName() {
 		return name;
 	}
 
-	public String getContinent() {
-		return continent;
+	public void setName(String name) {
+		this.name = name;
 	}
-
-	public String getWikipediaLink() {
-		return wikipediaLink;
-	}
-
+	
 }
