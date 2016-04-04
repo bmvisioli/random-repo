@@ -1,0 +1,27 @@
+<beanio xmlns="http://www.beanio.org/2012/03">
+  <stream name="runway" format="csv">
+    <record name="runway" class="com.github.bmvisioli.lun.model.Runway">
+      <field name="id" type="int"/>
+      <field name="airport" type="int"/>
+      <field name="airportIdent" ignore="true"/>
+      <field name="lengthFt" type="int" ignore="true" />
+      <field name="widthFt" type="int" ignore="true"/>
+      <field name="surface" />
+      <field name="elevationFt" type="int" ignore="true"/>
+      <field name="lighted" type="int" ignore="true"/>
+      <field name="closed" ignore="true" />
+      <field name="leIdent" ignore="true"/>
+      <field name="leLatitudeDeg" type="double" ignore="true"/>
+      <field name="leLongitudeDeg" type="double" ignore="true"/>
+      <field name="leElevationFt" ignore="true"/>
+      <field name="leHeadingDegT" type="double" ignore="true"/>
+      <field name="leDisplacedThresholdFt" ignore="true"/>
+      <field name="heIdent" ignore="true"/>
+      <field name="heLatitudeDeg" type="double" ignore="true"/>
+      <field name="heLongitudeDeg" type="double" ignore="true"/>
+      <field name="heElevationFt" ignore="true"/>
+      <field name="heHeadingDegT" type="double" ignore="true"/>
+      <field name="heDisplacedThresholdFt" type="int" ignore="true" minOccurs="0"/>
+    </record>
+  </stream>
+</beanio>
