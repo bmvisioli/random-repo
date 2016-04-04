@@ -2,8 +2,6 @@ package com.github.bmvisioli.lun.output;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import com.github.bmvisioli.lun.input.CountryData;
 import com.github.bmvisioli.lun.input.RunwayData;
@@ -16,7 +14,7 @@ public class Report {
 		return "reports";
 	}
 
-	public String getMostCommonRunwayLatitude(int size) {
+	public List<String>getMostCommonRunwayLatitude(int size) {
 		List<Runway> runwayList = new RunwayData().getRunwayList();
 		return runwayList.stream()
 		.collect(Collectors.groupingBy(Runway::getLeIdent, Collectors.counting()))
@@ -25,7 +23,7 @@ public class Report {
 		.sorted((e1,e2) -> Long.compare(e2.getValue(),e1.getValue()))
 		.limit(size)
 		.map(entry -> entry.getKey())
-		.collect(Collectors.joining("\n"));
+		.collect(Collectors.toList());
 	}
 	
 	public String getTypesOfRunwayPerCountry() {
@@ -44,7 +42,7 @@ public class Report {
 		return result.toString();
 	}
 
-	public String getCountriesByAirportCount(int size, boolean ascending) {
+	public List<Country> getCountriesByAirportCount(int size, boolean ascending) {
 		List<Country> countryList = new CountryData().getCountryList();
 		return countryList.stream()
 			.sorted((e1, e2) -> {
@@ -55,8 +53,7 @@ public class Report {
 				}
 			})
 			.limit(size)
-			.map(country -> country.getName() + " (" + country.getAirportList().size() + ")")
-			.collect(Collectors.joining(", "));
+			.collect(Collectors.toList());
 	}
 }
 
