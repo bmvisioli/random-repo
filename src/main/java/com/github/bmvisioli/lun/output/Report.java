@@ -1,7 +1,9 @@
 package com.github.bmvisioli.lun.output;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import com.github.bmvisioli.lun.input.CountryData;
 import com.github.bmvisioli.lun.input.RunwayData;
@@ -26,20 +28,19 @@ public class Report {
 		.collect(Collectors.toList());
 	}
 	
-	public String getTypesOfRunwayPerCountry() {
-		StringBuilder result = new StringBuilder();
+	public Map<Country, List<String>> getTypesOfRunwayPerCountry() {
+		Map<Country, List<String>> result = new HashMap<Country, List<String>>();
 		List<Country> countryList = new CountryData().getCountryList();
 		countryList.forEach(country -> {
-			result.append(country.getName() + "\n");
 			List<String> runwayTypeList = new ArrayList<String>();
 			country.getAirportList().forEach(airport -> 
 				airport.getRunwayList().forEach(runway -> 
 					runwayTypeList.add(runway.getSurface())
 				)
 			);
-			runwayTypeList.stream().distinct().forEach(type -> result.append("|-" + type + "\n"));
+			result.put(country, runwayTypeList.stream().distinct().collect(Collectors.toList()));
 		});
-		return result.toString();
+		return result;
 	}
 
 	public List<Country> getCountriesByAirportCount(int size, boolean ascending) {

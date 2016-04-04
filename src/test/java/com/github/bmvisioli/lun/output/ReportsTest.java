@@ -2,6 +2,7 @@ package com.github.bmvisioli.lun.output;
 
 import java.util.List;
 import org.junit.*;
+import com.github.bmvisioli.lun.input.CountryData;
 import com.github.bmvisioli.lun.model.Country;
 import static org.junit.Assert.*;
 
@@ -40,8 +41,8 @@ public class ReportsTest {
 	
 	@Test
 	public void getTypesOfRunwayPerCountryTest() {
-		String expected = "Andorra\nUnited Arab Emirates\n|-ASP";
-		assertTrue(report.getTypesOfRunwayPerCountry().startsWith(expected));
+		Country peru = new CountryData().getMatchingCountries("PE").get(0);
+		assertEquals("ASP",report.getTypesOfRunwayPerCountry().get(peru).get(0));
 	}
 		
 }
