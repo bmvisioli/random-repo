@@ -11,7 +11,7 @@ public class AirportDataTest {
 
 	@Test
 	public void readDataFromFileTest() {
-		List<Airport> airportList = airportData.readDataFromFile();
+		List<Airport> airportList = airportData.getAirportList();
 		assertEquals("Total Rf Heliport",airportList.get(0).getName());
 		assertEquals("US",airportList.get(0).getCountry());
 		assertEquals(46505,airportList.size());

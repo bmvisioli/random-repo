@@ -3,7 +3,6 @@ package com.github.bmvisioli.lun.input;
 import java.util.List;
 import org.junit.*;
 import com.github.bmvisioli.lun.model.Country;
-import com.github.bmvisioli.lun.output.Query;
 import static org.junit.Assert.*;
 
 public class CountryDataTest {
@@ -12,7 +11,7 @@ public class CountryDataTest {
 
 	@Test
 	public void readDataFromFileTest() {
-		List<Country> countryList = countryData.readDataFromFile();
+		List<Country> countryList = countryData.getCountryList();
 		assertEquals("AD", countryList.get(0).getCode());
 		assertEquals("Andorra", countryList.get(0).getName());
 		assertEquals(247, countryList.size());

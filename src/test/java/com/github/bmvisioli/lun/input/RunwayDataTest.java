@@ -11,7 +11,7 @@ public class RunwayDataTest {
 	
 	@Test
 	public void readDataFromFileTest() {
-		List<Runway> runwayList = runwayData.readDataFromFile();
+		List<Runway> runwayList = runwayData.getRunwayList();
 		assertEquals(269408, runwayList.get(0).getId());
 		assertEquals(6523, runwayList.get(0).getAirport());
 		assertEquals("ASPH-G", runwayList.get(0).getSurface());

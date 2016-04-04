@@ -2,7 +2,6 @@ package com.github.bmvisioli.lun.output;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import com.github.bmvisioli.lun.input.CountryData;
 import com.github.bmvisioli.lun.model.Country;
 

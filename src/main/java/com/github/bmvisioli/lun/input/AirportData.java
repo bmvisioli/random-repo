@@ -7,8 +7,17 @@ import org.beanio.StreamFactory;
 import com.github.bmvisioli.lun.model.Airport;
 
 public class AirportData {
+	
+	private static List<Airport> airportList;
+	
+	public List<Airport> getAirportList() {
+		if(airportList == null) {
+			airportList = readDataFromFile();
+		}
+		return airportList;
+	}
 
-	public List<Airport> readDataFromFile() {
+	private List<Airport> readDataFromFile() {
 		List<Airport> result = new ArrayList<Airport>();
 		
 		StreamFactory factory = StreamFactory.newInstance();

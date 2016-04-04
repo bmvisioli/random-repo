@@ -8,7 +8,16 @@ import com.github.bmvisioli.lun.model.Runway;
 
 public class RunwayData {
 
-	public List<Runway> readDataFromFile() {
+	private static List<Runway> runwayList;
+	
+	public List<Runway> getRunwayList() {
+		if(runwayList == null) {
+			runwayList = readDataFromFile();
+		}
+		return runwayList;
+	}
+	
+	private List<Runway> readDataFromFile() {
 		List<Runway> result = new ArrayList<Runway>();
 		
 		StreamFactory factory = StreamFactory.newInstance();

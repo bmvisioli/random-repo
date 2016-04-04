@@ -10,8 +10,10 @@ import com.github.bmvisioli.lun.model.Country;
 
 public class CountryData {
 
+	private static List<Country> countryList;
+	
 	public List<Country> getMatchingCountries(String criteria) {
-		Stream<Country> countryStream = readDataFromFile().stream();
+		Stream<Country> countryStream = getCountryList().stream();
 		return countryStream.filter(country -> 
 			criteria.length() == 2 ? 
 					country.getCode().toUpperCase().equals(criteria.toUpperCase()) :
@@ -19,7 +21,14 @@ public class CountryData {
 		).collect(Collectors.toList());
 	}
 	
-	protected List<Country> readDataFromFile() {
+	public List<Country> getCountryList() {
+		if(countryList == null) {
+			countryList = readDataFromFile();
+		}
+		return countryList;
+	}
+	
+	private List<Country> readDataFromFile() {
 		List<Country> result = new ArrayList<Country>();
 		
 		StreamFactory factory = StreamFactory.newInstance();
