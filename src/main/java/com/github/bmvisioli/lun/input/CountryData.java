@@ -40,7 +40,9 @@ public class CountryData {
         in.skip(1);
         
         while ((record = in.read()) != null) {
-            result.add((Country)record);
+        	Country country = (Country)record;
+        	country.getAirportList().addAll(new AirportData().getAirportByCountry(country.getCode()));        	
+        	result.add(country);
         }
         
         in.close();

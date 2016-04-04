@@ -1,7 +1,7 @@
 <beanio xmlns="http://www.beanio.org/2012/03">
   <stream name="airport" format="csv">
     <record name="airport" class="com.github.bmvisioli.lun.model.Airport">
-      <field name="id" type="int" ignore="true"/>
+      <field name="id" type="int" />
       <field name="ident" ignore="true"/>
       <field name="type" ignore="true"/>
       <field name="name" />

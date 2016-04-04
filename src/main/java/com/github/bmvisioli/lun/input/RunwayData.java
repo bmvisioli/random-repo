@@ -2,6 +2,7 @@ package com.github.bmvisioli.lun.input;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.beanio.BeanReader;
 import org.beanio.StreamFactory;
 import com.github.bmvisioli.lun.model.Runway;
@@ -15,6 +16,12 @@ public class RunwayData {
 			runwayList = readDataFromFile();
 		}
 		return runwayList;
+	}
+	
+	public List<Runway> getRunwayByAirport(int airportId) {
+		return getRunwayList().stream()
+				.filter(runway -> runway.getAirport() == airportId)
+				.collect(Collectors.toList());
 	}
 	
 	private List<Runway> readDataFromFile() {

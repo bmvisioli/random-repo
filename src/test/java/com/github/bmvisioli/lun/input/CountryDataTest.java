@@ -14,6 +14,7 @@ public class CountryDataTest {
 		List<Country> countryList = countryData.getCountryList();
 		assertEquals("AD", countryList.get(0).getCode());
 		assertEquals("Andorra", countryList.get(0).getName());
+		assertEquals(41841, countryList.get(0).getAirportList().get(0).getId());
 		assertEquals(247, countryList.size());
 	}
 	
