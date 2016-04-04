@@ -24,12 +24,10 @@ public class Query {
 
 	protected List<Country> getMatchingCountries(String criteria) {
 		Stream<Country> countryStream = new CountryData().readDataFromFile().stream();
-		Stream<Country> result;
-		if (criteria.length() == 2) {
-			result = countryStream.filter(country -> country.getCode().equals(criteria));
-		} else {
-			result = countryStream.filter(country -> country.getName().startsWith(criteria));
-		}
-		return result.collect(Collectors.toList());
+		return countryStream.filter(country -> 
+			criteria.length() == 2 ? 
+					country.getCode().equals(criteria) :
+					country.getName().startsWith(criteria)
+		).collect(Collectors.toList());
 	}
 }

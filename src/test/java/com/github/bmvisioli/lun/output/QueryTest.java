@@ -20,14 +20,26 @@ public class QueryTest {
 	}
 	
 	@Test
-	public void getMatchingCountriesCountryFoundTest() {
+	public void getMatchingCountriesCountryFoundWithNameTest() {
 		query = new Query("AR");
 		assertEquals("AR", query.getMatchingCountries("Arge").get(0).getCode());
 	}
 	
 	@Test
-	public void getMatchingCountriesNoCountryFoundTest() {
+	public void getMatchingCountriesNoCountryFoundWithNameTest() {
 		query = new Query("AR");
-		assertEquals(0, query.getMatchingCountries("Axx").size());
+		assertEquals(0, query.getMatchingCountries("Arxx").size());
+	}
+	
+	@Test
+	public void getMatchingCountriesCountryFoundWithCodeTest() {
+		query = new Query("AR");
+		assertEquals("Argentina", query.getMatchingCountries("AR").get(0).getName());
+	}
+	
+	@Test
+	public void getMatchingCountriesNoCountryFoundWithCodeTest() {
+		query = new Query("AR");
+		assertEquals(0, query.getMatchingCountries("XX").size());
 	}
 }
