@@ -14,9 +14,15 @@ public class QueryTest {
 	}
 	
 	@Test
-	public void buildTest() {
+	public void buildOneCountryFoundTest() {
 		query = new Query("Netherlands");
 		assertEquals("query Netherlands", query.build());
+	}
+	
+	@Test
+	public void buildTwoCountriesFoundTest() {
+		query = new Query("Ira");
+		assertEquals(String.format(Query.TOO_MANY_COUNTRIES_FOUND_MESSAGE, "Iraq, Iran"), query.build());
 	}
 	
 	@Test

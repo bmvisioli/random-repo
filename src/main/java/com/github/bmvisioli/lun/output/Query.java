@@ -1,5 +1,7 @@
-package com.github.bmvisioli.lun.output;
+package com.github.
+bmvisioli.lun.output;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -8,18 +10,34 @@ import com.github.bmvisioli.lun.model.Country;
 
 public class Query {
 
-	private String country;
+	public static final String TOO_MANY_COUNTRIES_FOUND_MESSAGE = "Found more than one country (%s) for this criteria. Please be more specific.";
+	
+	private String countryCriteria;
 
 	public Query(String country) {
-		this.country = country;
+		this.countryCriteria = country;
 	}
 
 	public String getCountry() {
-		return country;
+		return countryCriteria;
 	}
 
 	public String build() {
-		return "query " + getMatchingCountries(country).get(0).getName();
+		String result;
+		List<Country> matchingCountries = getMatchingCountries(countryCriteria);
+		switch(matchingCountries.size()) {
+			case 1:
+				result = "query " + getMatchingCountries(countryCriteria).get(0).getName();
+				break;
+			default:
+				result = String.format(TOO_MANY_COUNTRIES_FOUND_MESSAGE, 
+						String.join(", ", matchingCountries.stream()
+								.map(Country::getName)
+								.collect(Collectors.toList())));
+				break;
+		}
+		
+		return result;
 	}
 
 	protected List<Country> getMatchingCountries(String criteria) {
