@@ -18,4 +18,16 @@ public class QueryTest {
 		query = new Query("Netherlands");
 		assertEquals("query Netherlands", query.build());
 	}
+	
+	@Test
+	public void getMatchingCountriesCountryFoundTest() {
+		query = new Query("AR");
+		assertEquals("AR", query.getMatchingCountries("Arge").get(0).getCode());
+	}
+	
+	@Test
+	public void getMatchingCountriesNoCountryFoundTest() {
+		query = new Query("AR");
+		assertEquals(0, query.getMatchingCountries("Axx").size());
+	}
 }
