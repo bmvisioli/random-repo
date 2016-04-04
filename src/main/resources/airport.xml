@@ -1,0 +1,24 @@
+<beanio xmlns="http://www.beanio.org/2012/03">
+  <stream name="airport" format="csv">
+    <record name="airport" class="com.github.bmvisioli.lun.model.Airport">
+      <field name="id" type="int" ignore="true"/>
+      <field name="ident" ignore="true"/>
+      <field name="type" ignore="true"/>
+      <field name="name" />
+      <field name="latitudeDeg" type="double" ignore="true"/>
+      <field name="longitudeDeg" type="double" ignore="true"/>
+      <field name="elevationFt" type="int" ignore="true"/>
+      <field name="continent" ignore="true"/>
+      <field name="country" />
+      <field name="isoRegion" ignore="true"/>
+      <field name="municipality" ignore="true"/>
+      <field name="scheduledService" ignore="true"/>
+      <field name="gpsCode" ignore="true"/>
+      <field name="iataCode" ignore="true"/>
+      <field name="localCode" ignore="true"/>
+      <field name="homeLink" ignore="true"/>
+      <field name="wikipediaLink" ignore="true"/>
+      <field name="keywords" ignore="true"/>
+    </record>
+  </stream>
+</beanio>

@@ -1,16 +1,15 @@
 package com.github.bmvisioli.lun.model;
 
-public class Country {
+public class Airport {
 
-	private String code;
 	private String name;
-	
-	public String getCode() {
-		return code;
-	}
+	private String country;
 
 	public String getName() {
 		return name;
 	}
-	
+
+	public String getCountry() {
+		return country;
+	}
 }
