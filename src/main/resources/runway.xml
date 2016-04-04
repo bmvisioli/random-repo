@@ -7,10 +7,9 @@
       <field name="lengthFt" type="int" ignore="true" />
       <field name="widthFt" type="int" ignore="true"/>
       <field name="surface" />
-      <field name="elevationFt" type="int" ignore="true"/>
       <field name="lighted" type="int" ignore="true"/>
       <field name="closed" ignore="true" />
-      <field name="leIdent" ignore="true"/>
+      <field name="leIdent" />
       <field name="leLatitudeDeg" type="double" ignore="true"/>
       <field name="leLongitudeDeg" type="double" ignore="true"/>
       <field name="leElevationFt" ignore="true"/>

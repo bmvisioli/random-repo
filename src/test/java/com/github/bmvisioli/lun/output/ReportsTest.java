@@ -20,6 +20,7 @@ public class ReportsTest {
 	
 	@Test
 	public void getTypesOfRunwayPerCountryTest() {
+		System.out.println(report.getMostCommonRunwayLatitude(10));
 		String expected = "Andorra\nUnited Arab Emirates\n|-ASP";
 		assertTrue(report.getTypesOfRunwayPerCountry().startsWith(expected));
 	}

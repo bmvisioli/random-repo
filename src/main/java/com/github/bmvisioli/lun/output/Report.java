@@ -1,17 +1,31 @@
 package com.github.bmvisioli.lun.output;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import com.github.bmvisioli.lun.input.CountryData;
+import com.github.bmvisioli.lun.input.RunwayData;
 import com.github.bmvisioli.lun.model.Country;
+import com.github.bmvisioli.lun.model.Runway;
 
 public class Report {
 
 	public String build() {
 		return "reports";
+	}
+
+	public String getMostCommonRunwayLatitude(int size) {
+		List<Runway> runwayList = new RunwayData().getRunwayList();
+		return runwayList.stream()
+		.collect(Collectors.groupingBy(Runway::getLeIdent, Collectors.counting()))
+		.entrySet()
+		.stream()
+		.sorted((e1,e2) -> Long.compare(e2.getValue(),e1.getValue()))
+		.limit(size)
+		.map(entry -> entry.getKey())
+		.collect(Collectors.joining("\n"));
 	}
 	
 	public String getTypesOfRunwayPerCountry() {
