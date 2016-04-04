@@ -11,6 +11,8 @@ import com.github.bmvisioli.lun.model.Country;
 public class Query {
 
 	public static final String TOO_MANY_COUNTRIES_FOUND_MESSAGE = "Found more than one country (%s) for this criteria. Please be more specific.";
+
+	public static final String NO_COUNTRY_FOUND_MESSAGE = "Found no country that matches the criteria.";
 	
 	private String countryCriteria;
 
@@ -29,6 +31,9 @@ public class Query {
 			case 1:
 				result = "query " + getMatchingCountries(countryCriteria).get(0).getName();
 				break;
+			case 0:
+				result = NO_COUNTRY_FOUND_MESSAGE;
+				break;
 			default:
 				result = String.format(TOO_MANY_COUNTRIES_FOUND_MESSAGE, 
 						String.join(", ", matchingCountries.stream()
@@ -44,8 +49,8 @@ public class Query {
 		Stream<Country> countryStream = new CountryData().readDataFromFile().stream();
 		return countryStream.filter(country -> 
 			criteria.length() == 2 ? 
-					country.getCode().equals(criteria) :
-					country.getName().startsWith(criteria)
+					country.getCode().toUpperCase().equals(criteria.toUpperCase()) :
+					country.getName().toUpperCase().startsWith(criteria.toUpperCase())
 		).collect(Collectors.toList());
 	}
 }

@@ -26,9 +26,15 @@ public class QueryTest {
 	}
 	
 	@Test
+	public void buildNoCountryFoundTest() {
+		query = new Query("XX");
+		assertEquals(Query.NO_COUNTRY_FOUND_MESSAGE, query.build());
+	}
+	
+	@Test
 	public void getMatchingCountriesCountryFoundWithNameTest() {
 		query = new Query("AR");
-		assertEquals("AR", query.getMatchingCountries("Arge").get(0).getCode());
+		assertEquals("AR", query.getMatchingCountries("arge").get(0).getCode());
 	}
 	
 	@Test
