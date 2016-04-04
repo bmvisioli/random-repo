@@ -14,7 +14,7 @@ public class EntryPointTest {
 	@Test
 	public void handleInputReportsOptionTest() {
 		String[] input = {"reports"};
-		assertEquals("reports", EntryPoint.handleInput(input));
+		assertTrue(EntryPoint.handleInput(input).startsWith("Top 10 countries"));
 	}
 	
 	@Test

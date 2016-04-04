@@ -11,12 +11,29 @@ import com.github.bmvisioli.lun.model.Country;
 import com.github.bmvisioli.lun.model.Runway;
 
 public class Report {
-
+	
 	public String build() {
-		return "reports";
+		StringBuilder result = new StringBuilder();
+		result.append("Top 10 countries by airport count: ");
+		result.append(getCountriesByAirportCount(10, false).stream()
+			.map(country -> country.getName() + " ("+country.getAirportList().size()+")")
+			.collect(Collectors.joining(", ")));
+		result.append("\n\n");
+		result.append("Bottom 10 countries by airport count: ");
+		result.append(getCountriesByAirportCount(10, true).stream()
+			.map(country -> country.getName() + " ("+country.getAirportList().size()+")")
+			.collect(Collectors.joining(", ")));
+		result.append("\n\n");
+		result.append("Runway types per country: ");
+		getTypesOfRunwayPerCountry().forEach((country, list) -> {
+			result.append("\n\t" + country.getName() + ": " + String.join(", ",list));
+		});
+		result.append("\n\n");
+		result.append("The 10 most common runway latitudes: " + String.join(", ",getMostCommonRunwayLatitude(10)));
+		return result.toString();
 	}
 
-	public List<String>getMostCommonRunwayLatitude(int size) {
+	public List<String> getMostCommonRunwayLatitude(int size) {
 		List<Runway> runwayList = new RunwayData().getRunwayList();
 		return runwayList.stream()
 		.collect(Collectors.groupingBy(Runway::getLeIdent, Collectors.counting()))

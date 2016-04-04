@@ -12,7 +12,8 @@ public class ReportsTest {
 	
 	@Test
 	public void buildTest() {
-		assertEquals("reports", report.build());
+		System.out.println(report.build());
+		assertTrue(report.build().startsWith("Top 10 countries"));
 	}
 	
 	@Test
