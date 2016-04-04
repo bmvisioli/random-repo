@@ -2,24 +2,14 @@ package com.github.bmvisioli.lun.model;
 
 public class Country {
 
-	private int id;
 	private String code;
 	private String name;
 	
 	public Country() {}
 	
-	public Country(int id, String code, String name) {
-		this.id = id;
+	public Country(String code, String name) {
 		this.code = code;
 		this.name = name;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getCode() {

@@ -12,7 +12,6 @@ public class CountryDataTest {
 	@Test
 	public void readDataFromFileTest() {
 		List<Country> countryList = countryData.readDataFromFile();
-		assertEquals(302672	, countryList.get(0).getId());
 		assertEquals("AD", countryList.get(0).getCode());
 		assertEquals("Andorra", countryList.get(0).getName());
 		assertEquals(247, countryList.size());

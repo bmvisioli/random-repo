@@ -1,7 +1,7 @@
 <beanio xmlns="http://www.beanio.org/2012/03">
   <stream name="country" format="csv">
     <record name="country" class="com.github.bmvisioli.lun.model.Country">
-      <field name="id" type="int" />
+      <field name="id" type="int" ignore="true"/>
       <field name="code" />
       <field name="name" />
       <field name="continent" ignore="true"/>
