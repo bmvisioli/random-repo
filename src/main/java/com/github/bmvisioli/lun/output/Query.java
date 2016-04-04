@@ -25,7 +25,7 @@ public class Query {
 		List<Country> matchingCountries = new CountryData().getMatchingCountries(countryCriteria);
 		switch(matchingCountries.size()) {
 			case 1:
-				result = "query " + matchingCountries.get(0).getName();
+				result = createStringResult(matchingCountries.get(0));
 				break;
 			case 0:
 				result = NO_COUNTRY_FOUND_MESSAGE;
@@ -39,5 +39,17 @@ public class Query {
 		}
 		
 		return result;
+	}
+
+	private String createStringResult(Country country) {
+		StringBuilder builder = new StringBuilder();
+		builder.append(country.getName() + "\n");
+		country.getAirportList().forEach(airport -> {
+			builder.append("|- " + airport.getName() + "\n");
+			airport.getRunwayList().forEach(runway ->
+				builder.append("  |- " + runway.getId() + "\n")
+			);
+		});
+		return builder.toString();
 	}
 }

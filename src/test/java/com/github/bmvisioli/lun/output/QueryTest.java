@@ -15,8 +15,9 @@ public class QueryTest {
 	
 	@Test
 	public void buildOneCountryFoundTest() {
-		query = new Query("Netherlands");
-		assertEquals("query Netherlands", query.build());
+		query = new Query("AI");
+		String expected = "Anguilla\n|- Wallblake Airport\n  |- 233591\n";
+		assertEquals(expected, query.build());
 	}
 	
 	@Test

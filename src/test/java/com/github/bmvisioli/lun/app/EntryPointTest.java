@@ -20,7 +20,7 @@ public class EntryPointTest {
 	@Test
 	public void handleInputQueryOptionTest() {
 		String[] input = {"query", "Brazil"};
-		assertEquals("query Brazil", EntryPoint.handleInput(input));
+		assertTrue(EntryPoint.handleInput(input).startsWith("Brazil"));
 	}
 	
 	@Test
